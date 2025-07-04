@@ -10,6 +10,16 @@ from Crypto.Cipher import AES
 
 # Take input from the file called audio.wav
 fs, data = wavfile.read('audio.wav')
+
+# Save the data to a text file
+with open("output.txt", "w") as txt_file:
+    if data.ndim == 1:  # Mono
+        for sample in data:
+            txt_file.write(f"{sample}\n")
+    else:  # Stereo or multi-channel
+        for sample in data:
+            txt_file.write(" ".join(map(str, sample)) + "\n")
+
 plt.plot(data)            # fs = sampling frequency = 44.1kHz for CD quality
 plt.title("Original Audio Plot")
 plt.show()
@@ -46,6 +56,22 @@ print("A file titled 'encrypted_audio_file.wav' is generated which is the encryp
 # Load the encrypted audio file that was just created
 with open('encrypted_audio_file.wav', 'rb') as fd:
     contents = fd.read()
+
+plt.plot(list(contents))
+plt.title('Encrypted Audio')
+plt.show()
+
+# Plot a zoomed-in version of the encrypted audio
+plt.plot(list(contents))
+plt.title('Encrypted Audio, showing 1000 values')
+plt.xlim(10000, 11000)
+plt.show()
+
+# Plot an extremely zoomed-in version of the encrypted audio
+plt.plot(list(contents))
+plt.title('Encrypted Audio, showing 100 values')
+plt.xlim(10000, 10100)
+plt.show()
 
 # Decrypt the audio file
 # Pycryptodome library: Crypto.Cipher.AES.new(key, mode, *args, **kwargs)
