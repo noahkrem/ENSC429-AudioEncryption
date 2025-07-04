@@ -26,3 +26,6 @@ dist/
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
+
+# Audio files
+encrypted_audio_file.wav
