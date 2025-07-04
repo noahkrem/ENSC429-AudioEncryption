@@ -19,11 +19,6 @@ plt.show()
 with open('audio.wav', 'rb') as fd:
     contents = fd.read()
 
-# Play the sound back
-#sd.play(data, fs)
-#sd.wait()  # Wait for the playback to complete before moving on
-
-
 # Create the 256-bit AES encryption key, a random string 32 characters long
 # Note: AES_KEY should be 16, 24, or 32 bytes long or else it will cause an error
 AES_KEY = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for x in range(32))
@@ -70,7 +65,3 @@ plt.show()
 
 # Note: If we want to do further processing that requires 32-bit precision:
 #   data_1 = np.asarray(data, dtype = np.int32)
-
-# Play the decrypted audio
-sd.play(data, fs)
-sd.wait()
