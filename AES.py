@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sounddevice as sd
 
+import os
 import random
 import string
 from Crypto.Cipher import AES
@@ -31,10 +32,10 @@ with open('audio.wav', 'rb') as fd:
 
 # Create the 256-bit AES encryption key, a random string 32 characters long
 # Note: AES_KEY should be 16, 24, or 32 bytes long or else it will cause an error
-AES_KEY = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for x in range(32))
+AES_KEY = os.urandom(32)
 # Create the 128-bit initialization vector, a random string 16 characters long
 # Note: AES_IV should be 16 bytes for AES
-AES_IV = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for x in range(16))
+AES_IV = os.urandom(16)
 
 print("AES Key is ", AES_KEY)
 print("AES Initialization vector is ", AES_IV)
