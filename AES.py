@@ -25,7 +25,6 @@ with open("output.txt", "w") as txt_file:
 plt.plot(data)            # fs = sampling frequency = 44.1kHz for CD quality
 plt.title('Original Audio Plot')
 plt.show()
-plt.savefig('original.png')
 
 # Open the file in binary read mode (rb)
 # Read the contents of the file and store them into contents
@@ -63,21 +62,18 @@ with open('encrypted_audio_file.wav', 'rb') as fd:
 plt.plot(list(contents))
 plt.title('Encrypted Audio')
 plt.show()
-plt.savefig('encrypted.png')
 
 # Plot a zoomed-in version of the encrypted audio
 plt.plot(list(contents))
 plt.title('Encrypted Audio, showing 1000 values')
 plt.xlim(10000, 11000)
 plt.show()
-plt.savefig('encrypted_1000.png')
 
 # Plot an extremely zoomed-in version of the encrypted audio
 plt.plot(list(contents))
 plt.title('Encrypted Audio, showing 100 values')
 plt.xlim(10000, 10100)
 plt.show()
-plt.savefig('encrypted_100.png')
 
 # Decrypt the audio file
 # Pycryptodome library: Crypto.Cipher.AES.new(key, mode, *args, **kwargs)
@@ -94,7 +90,6 @@ fs, data = wavfile.read('decrypted_audio_file.wav')
 plt.plot(data)            # fs = sampling frequency = 44.1kHz for CD quality
 plt.title('Decrypted audio plot')
 plt.show()
-plt.savefig('decrypted.png')
 
 # Note: If we want to do further processing that requires 32-bit precision:
 #   data_1 = np.asarray(data, dtype = np.int32)

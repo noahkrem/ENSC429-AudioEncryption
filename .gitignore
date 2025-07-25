@@ -33,3 +33,5 @@ encrypted_audio_file.wav
 # RSA keys
 *.pem
 *.bin
+
+# Other output files
