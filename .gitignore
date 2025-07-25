@@ -29,3 +29,7 @@ dist/
 
 # Audio files
 encrypted_audio_file.wav
+
+# RSA keys
+*.pem
+*.bin

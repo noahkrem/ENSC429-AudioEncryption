@@ -1,6 +1,10 @@
 from scipy.io import wavfile
 import numpy as np
+
+import matplotlib
+matplotlib.use('TkAgg')  # For show() compatibility
 import matplotlib.pyplot as plt
+
 import sounddevice as sd
 import random
 import string

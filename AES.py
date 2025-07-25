@@ -10,8 +10,6 @@ import string
 from Crypto.Cipher import AES
 
 
-print(plt.get_backend())
-
 # Take input from the file called audio.wav
 fs, data = wavfile.read('audio.wav')
 
