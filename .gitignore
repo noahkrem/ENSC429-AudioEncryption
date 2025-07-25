@@ -29,9 +29,12 @@ dist/
 
 # Audio files
 encrypted_audio_file.wav
+decrypted_audio_file.wav
+decrypted.wav
 
 # RSA keys
 *.pem
 *.bin
 
 # Other output files
+output.txt
