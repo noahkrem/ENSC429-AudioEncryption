@@ -73,6 +73,7 @@ with open("wrapped_key.bin", "wb") as f:
 
 print("Wrapped AES key (base64):", base64.b64encode(rsa_wrapped_key).decode())
 
+
 # -------------------------------------------------------
 # UNWRAP (decrypt) the AES key
 # -------------------------------------------------------
