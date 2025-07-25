@@ -31,6 +31,22 @@ sudo apt install python3-tk
 
 ## 📄 Usage
 
+### Encrypting and Transmitting
+
+```bash
+cd transmit
+python transmit.py
+```
+
+### Receiving and Decrypting
+
+```bash
+cd receive
+python receive.py
+```
+
+### Displaying Graphs and Data
+
 ```bash
 python AES.py
 ```
