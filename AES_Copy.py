@@ -2,14 +2,9 @@ from scipy.io import wavfile
 import numpy as np
 import matplotlib.pyplot as plt
 import sounddevice as sd
-
 import random
 import string
 from Crypto.Cipher import AES
-
-# -------------------------------------------------------
-# 0) Imports  (add near the top of your script)
-# -------------------------------------------------------
 from Crypto.PublicKey import RSA
 from Crypto.Cipher    import PKCS1_OAEP
 import os, base64
@@ -48,7 +43,7 @@ print("AES Initialization vector is ", AES_IV)
 
 
 # -------------------------------------------------------
-# 1) RSA key-pair  (generate once, or re-use PEM files)
+# RSA key-pair
 # -------------------------------------------------------
 if not (os.path.exists("rsa_public.pem") and os.path.exists("rsa_private.pem")):
     rsa_key = RSA.generate(2048)                     # 2048-bit is fine for key wrapping
@@ -63,7 +58,7 @@ decryptor = PKCS1_OAEP.new(private_key)  # for unwrapping
 
 
 # -------------------------------------------------------
-# 2) WRAP (encrypt) the AES key
+# WRAP (encrypt) the AES key
 # -------------------------------------------------------
 key_bytes = AES_KEY.encode("utf-8")      # AES_KEY is your 32-char string
 rsa_wrapped_key = encryptor.encrypt(key_bytes)
@@ -75,7 +70,7 @@ with open("wrapped_key.bin", "wb") as f:
 print("Wrapped AES key (base64):", base64.b64encode(rsa_wrapped_key).decode())
 
 # -------------------------------------------------------
-# 3) UNWRAP (decrypt) the AES key when you need it
+# UNWRAP (decrypt) the AES key
 # -------------------------------------------------------
 with open("wrapped_key.bin", "rb") as f:
     rsa_wrapped_key = f.read()

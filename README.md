@@ -25,6 +25,10 @@ venv\scripts\activate  # On Windows
 pip install numpy matplotlib sounddevice pycryptodome scipy
 ```
 
+```bash
+sudo apt install python3-tk
+```
+
 ## 📄 Usage
 
 ```bash

@@ -1,5 +1,7 @@
 from scipy.io import wavfile
 import numpy as np
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import sounddevice as sd
 
@@ -7,6 +9,8 @@ import random
 import string
 from Crypto.Cipher import AES
 
+
+print(plt.get_backend())
 
 # Take input from the file called audio.wav
 fs, data = wavfile.read('audio.wav')
@@ -21,8 +25,9 @@ with open("output.txt", "w") as txt_file:
             txt_file.write(" ".join(map(str, sample)) + "\n")
 
 plt.plot(data)            # fs = sampling frequency = 44.1kHz for CD quality
-plt.title("Original Audio Plot")
+plt.title('Original Audio Plot')
 plt.show()
+plt.savefig('original.png')
 
 # Open the file in binary read mode (rb)
 # Read the contents of the file and store them into contents
@@ -60,18 +65,21 @@ with open('encrypted_audio_file.wav', 'rb') as fd:
 plt.plot(list(contents))
 plt.title('Encrypted Audio')
 plt.show()
+plt.savefig('encrypted.png')
 
 # Plot a zoomed-in version of the encrypted audio
 plt.plot(list(contents))
 plt.title('Encrypted Audio, showing 1000 values')
 plt.xlim(10000, 11000)
 plt.show()
+plt.savefig('encrypted_1000.png')
 
 # Plot an extremely zoomed-in version of the encrypted audio
 plt.plot(list(contents))
 plt.title('Encrypted Audio, showing 100 values')
 plt.xlim(10000, 10100)
 plt.show()
+plt.savefig('encrypted_100.png')
 
 # Decrypt the audio file
 # Pycryptodome library: Crypto.Cipher.AES.new(key, mode, *args, **kwargs)
@@ -86,8 +94,9 @@ with open('decrypted_audio_file.wav', 'wb') as fd:
 # Read the decrypted audio and plot the waveform
 fs, data = wavfile.read('decrypted_audio_file.wav')
 plt.plot(data)            # fs = sampling frequency = 44.1kHz for CD quality
-plt.title("Decrypted audio plot")
+plt.title('Decrypted audio plot')
 plt.show()
+plt.savefig('decrypted.png')
 
 # Note: If we want to do further processing that requires 32-bit precision:
 #   data_1 = np.asarray(data, dtype = np.int32)
