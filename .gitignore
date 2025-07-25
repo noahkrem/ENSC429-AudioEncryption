@@ -31,6 +31,7 @@ dist/
 encrypted_audio_file.wav
 decrypted_audio_file.wav
 decrypted.wav
+filtered_audio.wav
 
 # RSA keys
 *.pem
