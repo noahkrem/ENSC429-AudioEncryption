@@ -35,8 +35,9 @@ def decrypt_key(wrapped_key_path: str, private_key_path: str) -> dict:
     decryptor = PKCS1_OAEP.new(private_key)  # for unwrapping
 
     recovered_key_bytes = decryptor.decrypt(rsa_wrapped_key)
-    recovered_AES_KEY   = recovered_key_bytes.decode("utf-8")
+    recovered_AES_KEY = recovered_key_bytes.decode("utf-8")
 
     print("Recovered AES key:", recovered_AES_KEY)
 
     return recovered_AES_KEY
+
