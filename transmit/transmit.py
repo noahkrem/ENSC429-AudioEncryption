@@ -18,6 +18,5 @@ destination_folder = '../receive'
 shutil.copy('encrypted_audio_file.wav', destination_folder)
 shutil.copy('wrapped_key.bin', destination_folder)
 shutil.copy('iv.txt', destination_folder)
-shutil.copy('rsa_private.pem', destination_folder)
 
 

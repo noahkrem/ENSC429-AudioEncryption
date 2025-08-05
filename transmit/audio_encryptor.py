@@ -44,18 +44,11 @@ def encrypt_audio(input_wav_path: str, output_dir: str = ".") -> dict:
 # Encrypt the AES key
 def encrypt_key(AES_key: str):
 
-    # Generate an RSA key pair
-    if not (os.path.exists("rsa_public.pem") and os.path.exists("rsa_private.pem")):
-        rsa_key = RSA.generate(2048)                     # 2048-bit is fine for key wrapping
-        with open("rsa_private.pem", "wb") as f: f.write(rsa_key.export_key())
-        with open("rsa_public.pem",  "wb") as f: f.write(rsa_key.publickey().export_key())
-
-    public_key  = RSA.import_key(open("rsa_public.pem",  "rb").read())
-    encryptor = PKCS1_OAEP.new(public_key)   # for wrapping
-
+    public_key = RSA.import_key(open("rsa_public.pem",  "rb").read())
+    encryptor = PKCS1_OAEP.new(public_key)  # for wrapping
 
     # WRAP (encrypt) the AES key
-    key_bytes = AES_key.encode("utf-8")      # AES_KEY is your 32-char string
+    key_bytes = AES_key.encode("utf-8")  # AES_KEY is your 32-char string
     rsa_wrapped_key = encryptor.encrypt(key_bytes)
 
     # Persist or transmit the wrapped key
