@@ -31,6 +31,13 @@ sudo apt install python3-tk
 
 ## 📄 Usage
 
+### Generating RSA key pair
+
+```bash
+cd receive
+python generate_rsa_pair.py
+```
+
 ### Encrypting and Transmitting
 
 ```bash
@@ -48,6 +55,7 @@ python receive.py
 ### Displaying Graphs and Data
 
 ```bash
+cd files_testing
 python AES.py
 ```
 
